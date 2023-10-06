@@ -3,10 +3,11 @@ Product Inventory Application
 
 Steps to start the application:
 1. cd server —> Modify server.js to include the mongoDB details 
-2. npm install npm start 
-3. client
-4. npm install
-5. npm start   --> application launches on - http://localhost:3001
+2. npm install
+3. npm start 
+4. cd client
+5. npm install
+6. npm start   --> application launches on - http://localhost:3001
 
 
 Now lets enable APM and open telemetry  
