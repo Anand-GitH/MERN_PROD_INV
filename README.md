@@ -49,6 +49,7 @@ now log.debug, log.warn, log.warn, log.info will start sending logs to OCI loggi
 
 
 Now lets start the application 
+
 Terminal 1:
 1. cd server 
 2. npm start
@@ -59,6 +60,11 @@ Terminal 2:
 
 Application traces, metrics and logs are all sent to OCI. Traces and Metrics to OCI APM and logs to OCI Logging analytics. 
 
+OCI APM - Traces and Spans
+<img width="1429" alt="image" src="https://github.com/Anand-GitH/MERN_PROD_INV/assets/60418080/0733860d-6509-4b5a-8788-0773d84d8782">
 
+
+OCI Logging Analytics - logs 
+<img width="1429" alt="image" src="https://github.com/Anand-GitH/MERN_PROD_INV/assets/60418080/0280576c-6ff2-4758-9d5c-382677004af3">
 
  
