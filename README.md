@@ -22,15 +22,42 @@ Now lets enable APM and open telemetry  
 <script src="./apm-rum.js"></script> 
 <script async crossorigin="anonymous" src="https://aaaadcdobxuhuaaaaaaaaacc74.apm-agt.us-ashburn-1.oci.oraclecloud.com/static/jslib/apmrum.min.js"></script>   
 
-6. cd server 
-7. npm start
-8. cd client
-9. npm start 
+Now lets enable Logging Analytics 
+1. Goto server directory
+2. npm install undici
+3. npm install oci-loganalytics
+4. npm install bunyan
+5. Copy ocilogginganalytics.js to the server directory
+6. Now modify the code in ocilogginganalytics.js to fill in all the parameters : Refer document (LoggingAnalytics.pdf)
 
-Both server and client applications once started will send application traces to OCI APM
+    1. [PATH]/config - Path to config file 
+    2. [PROFILE] - Profile in config file to be used for OCI authentication 
+    3. [NAMESPACE] - Namespace 
+    4. [UPLOADNAME]- User defined name for uploads 
+    5. [LOGSOURCENAME]- Log Source Name created in OCI logging analytics
+    6. [LOGGROUPID]- Log Group ID created in Logging analytics to group the log messages
+    7. [BUFFERLENGTH] - Buffer size (number of log messages to store)
+    8. [FLUSHINTERVAL] – Flush internal in milliseconds to flush messages from buffer and send it to OCI LA
+    9. [LOGGERNAME] – user defined name to initialize the bunyan logger 
 
-<img width="710" alt="image" src="https://github.com/Anand-GitH/MERN_PROD_INV/assets/60418080/8c2430a8-532a-4a39-97c9-ef05f5e0e563">
-<img width="1399" alt="image" src="https://github.com/Anand-GitH/MERN_PROD_INV/assets/60418080/e47f3fd0-8ec2-4743-b153-f26431d43c8d">
+
+7. goto application files to initialize logger to use new LA logging 
+const ocilog= require('../ocilogginganalytics');
+var log=ocilog.getlogger();
+
+now log.debug, log.warn, log.warn, log.info will start sending logs to OCI logging analytics once the application started 
+
+
+Now lets start the application 
+Terminal 1:
+1. cd server 
+2. npm start
+
+Terminal 2:
+1. cd client
+2. npm start
+
+Application traces, metrics and logs are all sent to OCI. Traces and Metrics to OCI APM and logs to OCI Logging analytics. 
 
 
 
